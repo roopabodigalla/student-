@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #c5c9c3;
+    padding: 120px;
+    margin: 0px;
+    text-align: center;
+    font-size: 22px;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 50px;
+}
+button{
+    font-size: 20px;
+    margin-left: 5%;
+    background-color: aqua;
+    cursor:pointer;
+}
+form{
+    font-size: 25px;
+    background-color: #e0f7fa;
+    padding: 20px;
+    border: 2px solid #00796b;
+    border-radius: 8px;
+    width: 300px;
+    margin-left: 400px;
+}
+a{
+    font-style: italic;
+    font-size: 30px;
+    color: rgb(133, 10, 30);
+}
+   </style>
+</head>
+<body>
+
+{% block content %}
+    <h2>Register New Student</h2>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+{% endblock %}<br>
+<a href="{% url 'home' %}">back to home page</a>
+</body>
+</html>

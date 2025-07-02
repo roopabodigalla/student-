@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f4f5;
+    padding: 100px;
+    margin: 0px;
+    text-align: center;
+    font-size: 20px;
+}
+a{
+    font-style: italic;
+    font-size: 30px;
+    color: rgb(133, 10, 30);
+}
+</style>
+<body>
+   {% block content %}
+    <h2>Available Courses</h2>
+    <hr>
+    {% if courses %}
+        <ul>
+        {% for course in courses %}
+            <li><strong>{{ course.title }}</strong> (Instructor: {{ course.instructor.name }})</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No courses available.</p>
+    {% endif %}
+{% endblock %}
+<br>
+<a href="{% url 'home' %}">back to home page</a>
+</body>
+</html>

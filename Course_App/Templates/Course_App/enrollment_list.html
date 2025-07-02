@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    h2{
+        text-align: center;
+        color: chocolate;
+        font-size: 50px;
+
+    }
+    table{
+    max-width: 1200px;
+    margin: auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+}
+.btn{
+    padding-left: 500px;
+    font-size: 50px;
+}
+thead{
+    color: crimson;
+}
+    
+</style>
+</head>
+<body>
+    <h2>Enrollment List</h2>
+    <hr>
+    {% if enrollments %}
+        <table border="2" cellpadding="10">
+            <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Course</th>
+                <th>Instructor</th>
+                <th>Date Enrolled</th>
+                <th>Actions</th>   
+            </tr>
+            </thead>
+            {% for course in enrollments %}
+            <tbody>
+            <tr>
+                <td>{{ course.student.id }}</td>
+                <td>{{ course.student.name }}</td>
+                <td>{{ course.course.title }}</td>
+                <td>{{ course.course.instructor.name }}</td>
+                <td>{{ course.date_enrolled }}</td>
+                 <td>
+                <a href="{% url 'student_update' course.student.id %}">Edit</a> |
+                <a href="{% url 'student_delete' course.student.id %}">Delete</a>
+            </td>
+            </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No enrollments found.</p>
+    {% endif %}
+    <br>
+
+<a href="{% url 'home' %}" class="btn">back to home page</a>
+</body>
+</html>
